@@ -8,6 +8,18 @@ imprezowe sety techno, trance, rave i pokrewnych odmian muzyki elektronicznej.
 Rust oraz dokumentację docelowej wersji. Kryteria wydania imprezowego 1.0
 pozostają osobnymi bramkami odbioru; kompilacja nie oznacza ich zaliczenia.
 
+## Zrzuty aplikacji
+
+Konsola LIVE z dwoma deckami, mikserem, efektami, sekwencerem i biblioteką:
+
+![Konsola DJ EJAJ z deckami, mikserem, sekwencerem i biblioteką](docs/screenshots/aplikacja-1440.png)
+
+Widok przy szerokości okna 1280 punktów:
+
+![Konsola DJ EJAJ w oknie o szerokości 1280 punktów](docs/screenshots/aplikacja-1280.png)
+
+Obrazy przedstawiają działającą aplikację w wersji rozwojowej 0.1.0 z przykładową biblioteką.
+
 ## Dokumentacja
 
 - [Projekt aplikacji](docs/PROJEKT.md) — funkcje, wygląd konsoli, sterowanie,
@@ -31,8 +43,7 @@ określają dokumenty projektu. [Pełny prompt](docs/wizualizacje/konsola-live-v
 jest zapisany obok grafiki, aby umożliwić przygotowanie kolejnych wariantów.
 
 Zaimplementowana konsola ma w lewym górnym rogu wyraźne logo **DJ EJAJ**
-i mały podpis **by NT4.pl**. Aktualne zrzuty działającej aplikacji są w
-`output/screenshots/`; wcześniejsza makieta pozostaje materiałem projektowym.
+i mały podpis **by NT4.pl**. Wcześniejsza makieta pozostaje materiałem projektowym.
 
 ## Implementacja
 
