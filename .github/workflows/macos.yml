@@ -41,7 +41,7 @@ jobs:
         run: |
           set -euo pipefail
           test "$(uname -m)" = '${{ matrix.arch }}'
-          lipo -verify_arch '${{ matrix.arch }}' 'output/DJ EJAJ.app/Contents/MacOS/djejaj'
+          lipo 'output/DJ EJAJ.app/Contents/MacOS/djejaj' -verify_arch '${{ matrix.arch }}'
           ditto -c -k --sequesterRsrc --keepParent 'output/DJ EJAJ.app' 'output/DJ-EJAJ-macOS-${{ matrix.name }}.zip'
           shasum -a 256 'output/DJ-EJAJ-macOS-${{ matrix.name }}.zip' > 'output/DJ-EJAJ-macOS-${{ matrix.name }}.zip.sha256'
       - uses: actions/upload-artifact@v4
