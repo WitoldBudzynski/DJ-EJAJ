@@ -58,12 +58,19 @@ przed podmianą. **TEMPO SYNC** dopasowuje prędkość do globalnego BPM;
 pełna synchronizacja fazy i odbiór imprezowy są nadal otwarte.
 Pełny zakres i ograniczenia opisuje [stan implementacji](docs/IMPLEMENTACJA.md).
 
-## Uruchamianie
+## Pobierz DJ EJAJ
 
-Wersje testowe można pobrać z [GitHub Releases](https://github.com/WitoldBudzynski/DJ-EJAJ/releases).
-Wybierz ZIP dla swojego Maca: **Apple Silicon** albo **Intel**. Wersja ALPHA
-wymaga macOS 15 lub nowszego i nie jest podpisana ani notaryzowana, dlatego
-macOS może zablokować jej pierwsze uruchomienie.
+[Wszystkie dostępne wersje do pobrania](https://github.com/WitoldBudzynski/DJ-EJAJ/releases)
+
+Wersja ALPHA `v0.1.0-alpha.2`:
+
+- [Pobierz dla Apple Silicon](https://github.com/WitoldBudzynski/DJ-EJAJ/releases/download/v0.1.0-alpha.2/DJ-EJAJ-macOS-Apple-Silicon.zip)
+- [Pobierz dla Intela](https://github.com/WitoldBudzynski/DJ-EJAJ/releases/download/v0.1.0-alpha.2/DJ-EJAJ-macOS-Intel.zip)
+
+Wersja ALPHA wymaga macOS 15 lub nowszego i nie jest podpisana ani
+notaryzowana, dlatego macOS może zablokować jej pierwsze uruchomienie.
+
+## Uruchamianie ze źródeł
 
 Lokalny pakiet powstaje w `output/DJ EJAJ.app`.
 [Krótka instrukcja pierwszego miksu](docs/SZYBKI_START.md) opisuje obsługę
