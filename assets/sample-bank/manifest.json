@@ -1,0 +1,20 @@
+{
+  "bits": 24,
+  "channels": 2,
+  "creator": "DJ EJAJ / NT4.pl",
+  "origin": "Original deterministic DSP synthesis; no third-party recordings",
+  "recipe_source": "crates/sampler/src/lib.rs::generate",
+  "sample_rate": 48000,
+  "schema": 1,
+  "seed": "0xE1A40001 + instrument index",
+  "sounds": [
+    "Kick",
+    "Clap",
+    "Closed hat",
+    "Open hat",
+    "Perc",
+    "Bass",
+    "Stab",
+    "FX"
+  ]
+}

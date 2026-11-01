@@ -1,0 +1,17 @@
+{
+  "channels": 2,
+  "device": "SMSL D300",
+  "diagnostics": {
+    "actual_buffer_max_frames": 256,
+    "actual_buffer_min_frames": 256,
+    "callbacks": 10340,
+    "deadline_misses": 0,
+    "max_callback_ns": 396070,
+    "p99_callback_budget_fraction_upper_bound": 0.0625,
+    "stream_error": false
+  },
+  "requested_buffer": 256,
+  "sample_rate": 44100,
+  "seconds": 60.022715488,
+  "signal": "silence; no physical output or round-trip latency validation"
+}

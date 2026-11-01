@@ -1,0 +1,11 @@
+[package]
+name = "djejaj-sampler"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+djejaj-dsp = { path = "../dsp" }
+serde.workspace = true
+serde_json.workspace = true
+hound.workspace = true
+anyhow.workspace = true
