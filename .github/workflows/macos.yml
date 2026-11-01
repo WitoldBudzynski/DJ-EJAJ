@@ -1,0 +1,75 @@
+name: macOS
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*-alpha.*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Testy i pakiet (${{ matrix.name }})
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Apple-Silicon
+            runner: macos-15
+            arch: arm64
+          - name: Intel
+            runner: macos-15-intel
+            arch: x86_64
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalacja toolchainu
+        run: rustup show
+      - name: Formatowanie
+        run: cargo fmt --all --check
+      - name: Testy
+        run: cargo test --workspace --locked
+      - name: Clippy
+        run: cargo clippy --workspace --all-targets --locked -- -D warnings
+      - name: Budowanie aplikacji
+        run: python3 scripts/package_macos.py
+      - name: Kontrola architektury i pakowanie
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(uname -m)" = '${{ matrix.arch }}'
+          lipo -verify_arch '${{ matrix.arch }}' 'output/DJ EJAJ.app/Contents/MacOS/djejaj'
+          ditto -c -k --sequesterRsrc --keepParent 'output/DJ EJAJ.app' 'output/DJ-EJAJ-macOS-${{ matrix.name }}.zip'
+          shasum -a 256 'output/DJ-EJAJ-macOS-${{ matrix.name }}.zip' > 'output/DJ-EJAJ-macOS-${{ matrix.name }}.zip.sha256'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macOS-${{ matrix.name }}
+          path: |
+            output/*.zip
+            output/*.sha256
+          if-no-files-found: error
+
+  release:
+    name: Wydanie ALPHA
+    if: startsWith(github.ref, 'refs/tags/v') && contains(github.ref_name, '-alpha.')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: packages
+          merge-multiple: true
+      - name: Utworzenie wydania przedpremierowego
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          gh release create "$TAG" packages/*.zip packages/*.sha256 \
+            --verify-tag --prerelease --title "DJ EJAJ $TAG" \
+            --notes 'Wersja ALPHA do testów. Wymaga macOS 15 lub nowszego. Wybierz paczkę odpowiednią dla procesora: Apple Silicon albo Intel. Aplikacja nie jest podpisana ani notaryzowana przez Apple; macOS może zablokować jej pierwsze uruchomienie. Pełna synchronizacja fazy i odbiór imprezowy pozostają w przygotowaniu.'

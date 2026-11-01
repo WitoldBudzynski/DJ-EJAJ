@@ -60,8 +60,12 @@ Pełny zakres i ograniczenia opisuje [stan implementacji](docs/IMPLEMENTACJA.md)
 
 ## Uruchamianie
 
-Gotowy pakiet: `output/DJ EJAJ.app` lub archiwum
-`output/DJ-EJAJ-0.1.0-macOS-Intel.zip`.
+Wersje testowe można pobrać z [GitHub Releases](https://github.com/WitoldBudzynski/DJ-EJAJ/releases).
+Wybierz ZIP dla swojego Maca: **Apple Silicon** albo **Intel**. Wersja ALPHA
+wymaga macOS 15 lub nowszego i nie jest podpisana ani notaryzowana, dlatego
+macOS może zablokować jej pierwsze uruchomienie.
+
+Lokalny pakiet powstaje w `output/DJ EJAJ.app`.
 [Krótka instrukcja pierwszego miksu](docs/SZYBKI_START.md) opisuje obsługę
 bez znajomości kodu. Poniżej polecenia dla pracy z repozytorium.
 
@@ -87,6 +91,10 @@ python3 scripts/package_macos.py
 
 Ostatnie polecenie tworzy `output/DJ EJAJ.app` wraz z informacjami licencyjnymi
 zależności. To lokalny pakiet rozwojowy; podpis i notaryzacja wydania są osobnym krokiem.
+
+GitHub Actions sprawdza projekt i buduje pakiety dla obu architektur. Wysłanie
+tagu w formacie `v0.1.0-alpha.1` uruchamia testy i po ich przejściu publikuje
+wydanie przedpremierowe z paczkami ZIP oraz sumami SHA-256.
 
 ```sh
 sh scripts/run.sh --demo
